@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!--  <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -83,3 +83,104 @@ div :nth-child(3){
 </html>
 -------->
 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Web Dev Rage Simulator</title>
+<style>
+    body { font-family: 'Courier New', monospace; background: #121212; color: #f5f5f5; margin:0; padding:0; }
+    header { background:#d32f2f; text-align:center; padding:2rem 1rem; }
+    header h1 { margin:0; font-size:2.5rem; color:#fff; }
+    main { padding:2rem; max-width:900px; margin:auto; }
+    section { margin-bottom:2rem; border-left:5px solid #ff5252; padding:1rem 1rem 1rem 1.5rem; border-radius:5px; background:#1b1b1b;}
+    h2 { color:#ff8a80; margin-bottom:0.5rem; }
+    button { background:#ff5252; color:#fff; border:none; padding:0.5rem 1rem; margin-top:0.5rem; cursor:pointer; font-weight:bold; border-radius:5px; transition:.2s; }
+    button:hover { background:#ff1744; }
+    .rant { margin-top:0.5rem; color:#ff1744; font-weight:bold; white-space:pre-line; }
+    footer { text-align:center; padding:1rem; background:#1f1f1f; color:#888; }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Web Dev Rage Simulator</h1>
+    <p>Click the buttons to release developer frustration</p>
+</header>
+
+<main>
+
+<section>
+    <h2>HTML Hell</h2>
+    <button onclick="showRant('html')">Rage!</button>
+    <p id="html" class="rant"></p>
+</section>
+
+<section>
+    <h2>CSS Chaos</h2>
+    <button onclick="showRant('css')">Rage!</button>
+    <p id="css" class="rant"></p>
+</section>
+
+<section>
+    <h2>JS Nightmares</h2>
+    <button onclick="showRant('js')">Rage!</button>
+    <p id="js" class="rant"></p>
+</section>
+
+<section>
+    <h2>Browser BS</h2>
+    <button onclick="showRant('browser')">Rage!</button>
+    <p id="browser" class="rant"></p>
+</section>
+
+<section>
+    <h2>Git & Deployment Torture</h2>
+    <button onclick="showRant('git')">Rage!</button>
+    <p id="git" class="rant"></p>
+</section>
+
+<section>
+    <h2>Dependency / Package Madness</h2>
+    <button onclick="showRant('npm')">Rage!</button>
+    <p id="npm" class="rant"></p>
+</section>
+
+</main>
+
+<footer>
+    <p>Developer Reality Check © 2025 | Rage responsibly</p>
+</footer>
+
+<script>
+// Base fragments to dynamically generate rants
+const fragments = {
+    html: ["forgot to close", "div nesting nightmare", "table alignment issue", "inline styles gone wrong", "semantic tags ignored", "doctype drama", "ID clash horror", "form validation mess", "attribute typo rage", "img src broken", "meta tag fail", "link tag lost", "section misplaced", "header chaos", "footer gone rogue"],
+    css: ["flexbox ruined", "margin collapse sucks", "padding mystery", "z-index hell", "position absolute pain", "float disasters", "media queries nightmare", "grid not working", "animation bug", "pseudo-class gone wild", "colors not matching", "font-size headache", "overflow hidden madness", "responsive pain", "border radius fail", "shadow blur insanity", "transition bug", "hover ignored", "opacity zero trick", "clip-path rage"],
+    js: ["undefined is not a function", "async await betrayal", "promise rejection panic", "closure confusion", "callback hell", "type coercion disaster", "NaN everywhere", "object mutation rage", "event listener missing", "DOM not loaded", "scope fight", "JSON parse fail", "loop off by one", "infinite recursion", "array map error", "const vs let pain", "this context lost", "prototype chain horror", "stack overflow error", "syntax typo"],
+    browser: ["IE11 refuses", "Safari ignores styles", "Firefox renders differently", "Chrome bug", "Edge quirk", "cross-browser chaos", "cache not clearing", "devtools misleading", "local storage lost", "cookie mismatch"],
+    git: ["merge conflict hell", "rebase nightmare", "push to master by accident", "detached head panic", "stashing failed", "commit forgotten", "branch lost", "pull fail", "remote mismatch", "history rewrite disaster", "git blame sadness", "tag lost", "checkout horror", "reset panic", "force push regret"],
+    npm: ["dependency hell", "version mismatch", "node_modules heavy", "package abandoned", "peer dependency error", "build fail", "postinstall script broke", "lockfile issues", "npm audit freakout", "package not found", "package deprecated", "npm install endless", "package conflict", "update destroyed code", "script permission denied", "package.json typo", "npm start fail", "devDependencies confusion", "global install rage", "node version pain"]
+};
+
+// Function to generate a random rant dynamically
+function generateRant(category) {
+    let catFragments = fragments[category];
+    let pickCount = Math.min(3, catFragments.length);
+    let rantParts = [];
+    for (let i=0; i<pickCount; i++){
+        rantParts.push(catFragments[Math.floor(Math.random()*catFragments.length)]);
+    }
+    return "F*** this: " + rantParts.join(", ") + "!";
+}
+
+function showRant(category) {
+    const rant = generateRant(category);
+    document.getElementById(category).textContent = rant;
+}
+</script>
+
+</body>
+</html>
